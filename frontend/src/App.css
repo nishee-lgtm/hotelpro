@@ -678,3 +678,12 @@ h2 { font-size: 36px; }
   background: rgba(18, 18, 24, 0.82);
   backdrop-filter: blur(6px);
 }
+/* ---------- My Bookings background ---------- */
+.bookings-bg {
+  min-height: 75vh;
+  padding: 40px 24px;
+  background:
+    linear-gradient(rgba(10, 10, 14, 0.75), rgba(10, 10, 14, 0.85)),
+    url("https://png.pngtree.com/thumb_back/fh260/background/20240726/pngtree-modern-hotel-bedroom-with-city-view-image_16116442.jpg") center / cover no-repeat;
+  border: 1px solid var(--line);
+}

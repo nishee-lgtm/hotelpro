@@ -48,6 +48,7 @@ function MyBookings() {
   const fmt = (d) => new Date(d).toLocaleDateString("en-IN");
 
   return (
+    <div className="bookings-bg">
     <div>
       <h2>My Bookings</h2>
       {error && <p className="error">{error}</p>}
@@ -90,6 +91,7 @@ function MyBookings() {
         ))}
       </div>
     </div>
+  </div>
   );
 }
 
