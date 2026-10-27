@@ -1,0 +1,680 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+:root {
+  --black: #0d0d0f;
+  --panel: #16161a;
+  --panel-2: #1d1d22;
+  --gold: #c9a961;
+  --gold-light: #e6cf94;
+  --gold-dark: #9c7f3f;
+  --text: #e9e5db;
+  --muted: #9a968c;
+  --line: rgba(201, 169, 97, 0.28);
+  --green: #3fae78;
+  --red: #d6574f;
+  --amber: #d8a431;
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: dark; }
+
+body {
+  margin: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(13, 13, 15, 0.92), rgba(13, 13, 15, 0.92)),
+    url("/bg.jpg") center / cover fixed,
+    var(--black);
+}
+
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  background: rgba(13, 13, 15, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+
+.navbar a:hover { color: var(--gold); }
+
+.navbar .brand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-left: 0;
+  text-transform: uppercase;
+}
+
+.nav-links { display: flex; align-items: center; }
+
+.nav-links button {
+  margin-left: 28px;
+  padding: 9px 22px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+
+.nav-links button:hover { background: var(--gold); color: var(--black); }
+
+.role {
+  margin-left: 28px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  border: 1px solid var(--line);
+  padding: 4px 12px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 30px;
+  margin-bottom: 70px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(rgba(8, 8, 10, 0.62), rgba(8, 8, 10, 0.78)),
+    url("/bg.jpg") center / cover,
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80") center / cover,
+    var(--panel);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(201, 169, 97, 0.35);
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  margin: 0 0 16px;
+  color: white;
+  font-weight: 600;
+}
+
+.hero p.tagline {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #d8d3c6;
+  max-width: 520px;
+  margin: 0 0 30px;
+  line-height: 1.7;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 14px;
+  color: var(--gold);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  width: 70px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-head { text-align: center; margin-bottom: 40px; }
+
+.section-title {
+  font-size: 44px;
+  margin: 0 0 6px;
+  color: var(--gold-light);
+}
+
+.section-sub { color: var(--muted); font-size: 14px; letter-spacing: 1px; margin: 0; }
+
+/* ---------- Cards ---------- */
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.room-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.room-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.room-img {
+  position: relative;
+  height: 230px;
+  background: linear-gradient(135deg, #22222a, #33333d) center / cover;
+}
+
+.room-body { padding: 24px; }
+
+.rooms > .room-card:not(:has(.room-img)) { padding: 24px; }
+
+.room-card h3 { margin: 0 0 4px; font-size: 28px; }
+
+.type {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  color: var(--gold-dark);
+  margin: 0 0 16px;
+}
+
+.room-card p { color: var(--text); font-size: 14px; line-height: 1.6; margin: 6px 0; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+
+.chip {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 4px 12px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.room-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.price {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.price small {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 5px 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.status.available { background: rgba(63, 174, 120, 0.9); }
+.status.booked { background: rgba(214, 87, 79, 0.9); }
+.status.maintenance { background: rgba(216, 164, 49, 0.9); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--black);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn:hover { background: var(--gold-dark); color: white; }
+
+.room-card button {
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+
+.room-card button:hover { background: var(--gold); color: var(--black); }
+
+.room-card button.danger {
+  color: var(--red);
+  border-color: var(--red);
+  margin-top: 12px;
+}
+
+.room-card button.danger:hover { background: var(--red); color: white; }
+
+.actions { display: flex; gap: 10px; margin-top: 14px; }
+
+.actions select {
+  padding: 9px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  font-family: inherit;
+}
+
+/* ---------- Forms ---------- */
+.form {
+  max-width: 430px;
+  margin: 40px auto;
+  background: rgba(22, 22, 26, 0.94);
+  padding: 44px 38px;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form h2 { margin: 0 0 8px; font-size: 38px; text-align: center; }
+
+.form input {
+  padding: 13px 14px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.15);
+}
+
+.form label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: -6px;
+}
+
+.form button {
+  margin-top: 8px;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+
+.form button:hover { background: var(--gold-dark); color: white; }
+.form a { color: var(--gold); }
+.form p { color: var(--muted); font-size: 13px; text-align: center; }
+
+body:has(.form) {
+  background:
+    linear-gradient(rgba(8, 8, 10, 0.78), rgba(8, 8, 10, 0.85)),
+    url("/login-bg.jpg") center / cover fixed,
+    var(--black);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+  background: #555;
+}
+
+.badge.confirmed { background: #3b7dd8; }
+.badge.checked-in { background: var(--green); }
+.badge.checked-out { background: #666; }
+.badge.cancelled { background: var(--red); }
+.badge.pay-paid { background: var(--green); }
+.badge.pay-pending { background: var(--amber); }
+.badge.pay-refunded { background: #8e44ad; }
+
+.small { font-size: 12px; color: var(--muted); }
+.error { color: #ff8a80; font-size: 14px; }
+
+h2 { font-size: 36px; }
+
+@media (max-width: 700px) {
+  .navbar { padding: 14px 18px; flex-wrap: wrap; gap: 10px; }
+  .navbar a { margin-left: 16px; font-size: 11px; }
+  .hero { min-height: 360px; }
+  .hero h1 { font-size: 38px; }
+  .section-title { font-size: 32px; }
+}
+/* ---------- Admin ---------- */
+.tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
+
+.tabs button {
+  padding: 10px 26px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tabs button.active {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+.table-wrap { overflow-x: auto; margin-top: 24px; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.table th {
+  text-align: left;
+  padding: 14px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.table td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.12);
+  vertical-align: middle;
+}
+
+.table select {
+  padding: 7px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  font-family: inherit;
+}
+
+.row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.table button {
+  padding: 7px 14px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.table button:hover { background: var(--gold); color: var(--black); }
+.table button.danger { color: var(--red); border-color: var(--red); }
+.table button.danger:hover { background: var(--red); color: white; }
+
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 24px;
+}
+
+.admin-form h3 { grid-column: 1 / -1; margin: 0; }
+
+.admin-form input,
+.admin-form select {
+  padding: 12px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  font-family: inherit;
+}
+
+.admin-form button {
+  padding: 12px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: inherit;
+}
+
+.success { color: var(--green); text-align: center; }
+.error { text-align: center; }
+/* ---------- Login / Register ---------- */
+.auth-wrap {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: radial-gradient(ellipse at top, rgba(201, 169, 97, 0.12), transparent 60%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 44px 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201, 169, 97, 0.18);
+  pointer-events: none;
+}
+
+.auth-eyebrow {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.auth-title {
+  text-align: center;
+  margin: 10px 0 14px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--gold-light);
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.auth-divider span { width: 50px; height: 1px; background: var(--gold); }
+
+.auth-divider i {
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.auth-sub {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.auth-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.auth-card input {
+  padding: 14px;
+  margin-bottom: 18px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.auth-card input:focus { border-color: var(--gold); }
+
+.auth-btn {
+  margin-top: 6px;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.auth-btn:hover { filter: brightness(1.08); }
+
+.auth-error {
+  text-align: center;
+  color: var(--red);
+  border: 1px solid var(--red);
+  padding: 10px;
+  margin: 0 0 20px;
+  font-size: 13px;
+}
+
+.auth-foot {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 24px 0 0;
+}
+
+.auth-foot a { color: var(--gold); text-decoration: none; }
+.auth-foot a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .auth-card { padding: 34px 22px; }
+}
+
+/* ---------- Auth background photo ---------- */
+.auth-wrap {
+  background:
+    linear-gradient(rgba(10, 10, 14, 0.72), rgba(10, 10, 14, 0.82)),
+    url("https://png.pngtree.com/thumb_back/fh260/background/20240726/pngtree-modern-hotel-bedroom-with-city-view-image_16116442.jpg") center / cover no-repeat;
+  border: 1px solid var(--line);
+  min-height: 78vh;
+}
+
+.auth-card {
+  background: rgba(18, 18, 24, 0.82);
+  backdrop-filter: blur(6px);
+}
